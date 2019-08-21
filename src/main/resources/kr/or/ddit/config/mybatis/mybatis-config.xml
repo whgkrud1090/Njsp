@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<properties
+		resource="kr/or/ddit/config/mybatis/db.properties"></properties>
+	
+	<typeAliases>
+		<typeAlias alias="user" type="kr.or.ddit.user.model.User" />
+		<typeAlias alias="lprod" type="kr.or.ddit.lprod.model.Lprod" />
+		<typeAlias alias="prod" type="kr.or.ddit.prod.model.Prod" />
+		<typeAlias alias="page" type="kr.or.ddit.common.model.Page" />
+	</typeAliases>
+		
+	<environments default="development">
+		<environment id="development">
+			<transactionManager type="JDBC" />
+			<dataSource type="POOLED">
+				<property name="driver" value="${jdbc.driver}" />
+				<property name="url" value="${jdbc.url}" />
+				<property name="username" value="${jdbc.user}" />
+				<property name="password" value="${jdbc.pass}" />
+			</dataSource>
+		</environment>
+	</environments>
+	<mappers>
+		<mapper resource="kr/or/ddit/config/mybatis/mapper/user.xml" />
+		<mapper resource="kr/or/ddit/config/mybatis/mapper/lprod.xml" />
+		<mapper resource="kr/or/ddit/config/mybatis/mapper/prod.xml" />
+	</mappers>
+</configuration>
+
+
+
+

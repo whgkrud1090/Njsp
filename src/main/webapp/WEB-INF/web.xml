@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://java.sun.com/xml/ns/javaee"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+	version="3.0">
+	<display-name>jsp</display-name>
+	<welcome-file-list>
+		<welcome-file>index.html</welcome-file>
+		<welcome-file>index.htm</welcome-file>
+		<welcome-file>index.jsp</welcome-file>
+		<welcome-file>default.html</welcome-file>
+		<welcome-file>default.htm</welcome-file>
+		<welcome-file>default.jsp</welcome-file>
+	</welcome-file-list>
+
+	<!-- error page -->
+	<error-page>
+		<error-code>404</error-code>
+		<location>/error/404/404.html</location>
+	</error-page>
+
+	<error-page>
+		<exception-type>java.lang.ArithmeticException</exception-type>
+		<location>/error/type/arithmeticException.jsp</location>
+	</error-page>
+
+	<error-page>
+		<error-code>500</error-code>
+		<location>/error/500/500.html</location>
+	</error-page>
+
+
+
+
+	<!-- 초기화 파라미터 -->
+	<context-param>
+		<param-name>ADMIN</param-name>
+		<param-value>brown</param-value>
+	</context-param>
+
+	<servlet>
+		<servlet-name>helloWorld</servlet-name>	<!-- 개발자가 붙여주는 서블릿 이름(별칭) -->
+		<servlet-class>kr.or.ddit.servlet.HelloServlet</servlet-class>	<!-- 서브릿의 풀 네임 (패키지 + 클래스명) -->
+		<load-on-startup>1</load-on-startup>
+		<!-- <init-param> -->
+		<!-- <param-name>test</param-name> -->
+		<!-- <param-value>sally</param-value> -->
+		<!-- </init-param> -->
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>helloWorld</servlet-name>
+		<url-pattern>/helloWorld</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>timesTables</servlet-name>
+		<servlet-class>kr.or.ddit.servlet.TimesTablesServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>timesTables</servlet-name>
+		<url-pattern>/TimesTablesServlet</url-pattern>
+	</servlet-mapping>
+
+	<resource-ref>
+		<description>DB Connection</description>
+		<res-ref-name>jdbc/oracleDB</res-ref-name>
+		<res-type>javax.sql.DataSource</res-type>
+		<res-auth>Container</res-auth>
+	</resource-ref>
+</web-app>
+
+
+
+
+
+
+
+
+
+
+
+
+
