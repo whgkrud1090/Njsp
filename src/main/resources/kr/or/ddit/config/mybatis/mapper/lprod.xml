@@ -13,6 +13,22 @@
 		from users
 		where userId = #{userId}	
 	</select>
+	
+	<select id="getLprodPagingList" resultType="lprod" parameterType="page">
+	select a.* 
+	  from
+	    (select rownum rn, a.* 
+	       from
+	        (select  a.* 
+	           from lprod a
+	         order by lprod_id) a)a
+      where rn between #{pagesize}*(#{page} - 1) + 1 and #{pagesize}*#{page}
+	</select>
+	
+	<select id="getLprodTotalCnt" resultType="Integer">
+	select count(*)
+      from lprod
+	</select>
 </mapper>
 
 

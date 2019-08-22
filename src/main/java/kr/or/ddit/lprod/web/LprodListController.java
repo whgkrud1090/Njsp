@@ -12,6 +12,8 @@ import org.slf4j.LoggerFactory;
 
 import kr.or.ddit.lprod.dao.ILprodDao;
 import kr.or.ddit.lprod.dao.LprodDao;
+import kr.or.ddit.lprod.service.ILprodService;
+import kr.or.ddit.lprod.service.LprodService;
 
 /**
  * Servlet implementation class LprodListController
@@ -21,15 +23,15 @@ public class LprodListController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private static final Logger logger = LoggerFactory.getLogger(LprodListController.class);
 	
-	private ILprodDao lprodDao;
+	private ILprodService lprodService;
 	
 	@Override
 	public void init() throws ServletException {
-		lprodDao = new LprodDao();
+		lprodService = new LprodService();
 	}
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.setAttribute("lprodList", lprodDao.getLprodList());
+		request.setAttribute("lprodList", lprodService.getLprodList());
 		request.getRequestDispatcher("/lprod/lprodList.jsp").forward(request, response);
 	}
 
