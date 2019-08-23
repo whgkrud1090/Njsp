@@ -23,6 +23,7 @@ public class UserService implements IUserService{
 	@Override
 	public List<User> getUserList() {
 		SqlSession sqlSession = MybatisUtil.getSession();
+		
 		List<User> userList = userDao.getUserList(sqlSession);
 		sqlSession.close();
 		
@@ -32,6 +33,7 @@ public class UserService implements IUserService{
 	@Override
 	public User getUser(String userId) {
 		SqlSession sqlSession = MybatisUtil.getSession();
+		
 		User user = userDao.getUser(sqlSession, userId);
 		sqlSession.close();
 		return user;
@@ -40,6 +42,7 @@ public class UserService implements IUserService{
 	@Override
 	public List<User> getUserListOnlyHalf() {
 		SqlSession sqlSession = MybatisUtil.getSession();
+		
 		List<User> userList = userDao.getUserListOnlyHalf(sqlSession);
 		sqlSession.close();
 		
@@ -63,6 +66,30 @@ public class UserService implements IUserService{
 		sqlSession.close();
 		
 		return map;
+	}
+
+	@Override
+	public int insertUser(User user) {
+		SqlSession sqlSession = MybatisUtil.getSession();
+		
+		int insertCnt = userDao.insertUser(sqlSession, user);
+		
+		sqlSession.commit();
+		sqlSession.close();
+		
+		return insertCnt;
+	}
+
+	@Override
+	public int deleteUser(String userId) {
+		SqlSession sqlSession = MybatisUtil.getSession();
+		
+		int deleteCnt = userDao.deleteUser(sqlSession, userId);
+		
+		sqlSession.commit();
+		sqlSession.close();
+		
+		return deleteCnt;
 	}
 
 }
