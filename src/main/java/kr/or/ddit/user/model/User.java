@@ -17,7 +17,41 @@ public class User {
 	private String addr1;		//주소1
 	private String addr2;		//주소2
 	private String zipcode;		//우편번호
-	
+	private String filename;
+	private String realfilename;
+	private String realfilename2;
+
+
+	public String getRealfilename2() {
+		return realfilename2;
+	}
+
+
+	public void setRealfilename2(String realfilename2) {
+		this.realfilename2 = realfilename2;
+	}
+
+
+	public String getFilename() {
+		return filename;
+	}
+
+
+	public void setFilename(String filename) {
+		this.filename = filename;
+	}
+
+
+	public String getRealFilename() {
+		return realfilename;
+	}
+
+
+	public void setRealFilename(String realfilename) {
+		this.realfilename = realfilename;
+	}
+
+
 	public User() {
 		
 	}
@@ -47,7 +81,7 @@ public class User {
 	}
 	
 	public User(String userId, String userNm, String alias, Date reg_dt, String addr1, String addr2,
-			String pass, String zipcode) {
+			String pass, String zipcode, String filename, String realfilename) {
 		this.userId = userId;
 		this.userNm = userNm;
 		this.alias = alias;
@@ -56,6 +90,8 @@ public class User {
 		this.addr2 = addr2;
 		this.pass = pass;
 		this.zipcode = zipcode;
+		this.filename = filename;
+		this.realfilename = realfilename;
 		
 	}
 
@@ -109,7 +145,8 @@ public class User {
 	@Override
 	public String toString() {
 		return "User [userId=" + userId + ", pass=" + pass + ", userNm=" + userNm + ", alias=" + alias + ", reg_dt="
-				+ reg_dt + ", addr1=" + addr1 + ", addr2=" + addr2 + ", zipcode=" + zipcode + "]";
+				+ reg_dt + ", addr1=" + addr1 + ", addr2=" + addr2 + ", zipcode=" + zipcode + ", filename=" + filename
+				+ ", realfilename=" + realfilename + "]";
 	}
 
 	public boolean checkLoginValidate(String userId, String pass) {

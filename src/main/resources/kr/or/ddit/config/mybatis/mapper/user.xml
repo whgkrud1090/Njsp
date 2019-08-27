@@ -38,8 +38,8 @@
 	</select>
 	<!-- 사용자 등록 -->
 	<insert id="insertUser" parameterType="user">
-	  insert into users (userId, userNm, reg_dt, pass, addr1, addr2, zipcode, alias)
-      values(#{userId}, #{userNm}, #{reg_dt}, #{pass}, #{addr1}, #{addr2}, #{zipcode}, #{alias})
+	  insert into users (userId, userNm, reg_dt, pass, addr1, addr2, zipcode, alias, filename, realfilename)
+      values(#{userId}, #{userNm}, #{reg_dt}, #{pass}, #{addr1}, #{addr2}, #{zipcode}, #{alias},  #{filename}, #{realfilename})
 	</insert>
 	
 	<delete id="deleteUser" parameterType="String">

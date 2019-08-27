@@ -76,15 +76,22 @@ function setTestData() {
 			</div>
 			<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 				
-				<form id="frm" class="form-horizontal" role="form" action="${cp }/userForm" method="post">
+				<%--파일 전송은 post만 가능 --%>
+				<form id="frm" class="form-horizontal" role="form" action="${cp }/userForm" method="post" enctype="multipart/form-data">
 					
+					<div class="form-group">
+						<label for="userNm" class="col-sm-2 control-label">사용자 사진</label>
+						<div class="col-sm-10">
+							<input type="file" class="form-control" id="picture" name="picture"
+								placeholder="사용자 사진">
+						</div>
+					</div>
 					<div class="form-group">
 						<label for="userNm" class="col-sm-2 control-label">사용자 아이디</label>
 						<div class="col-sm-10">
 							<input type="text" class="form-control" id="userId" name="userId"
 								placeholder="사용자 아이디" value="${parm.userId }">
 								${userIdMsg }
-
 						</div>
 					</div>
 
