@@ -39,12 +39,26 @@
 	<!-- 사용자 등록 -->
 	<insert id="insertUser" parameterType="user">
 	  insert into users (userId, userNm, reg_dt, pass, addr1, addr2, zipcode, alias, filename, realfilename)
-      values(#{userId}, #{userNm}, #{reg_dt}, #{pass}, #{addr1}, #{addr2}, #{zipcode}, #{alias},  #{filename}, #{realfilename})
+      values(#{userId}, #{userNm}, #{reg_dt}, #{pass}, #{addr1}, #{addr2}, #{zipcode}, #{alias},  #{filename, jdbcType=VARCHAR}, #{realfilename, jdbcType=VARCHAR})
 	</insert>
 	
 	<delete id="deleteUser" parameterType="String">
 		delete users where userId = #{userId}
 	</delete>
+	
+	<update id="updateUser" parameterType="user">
+		update users
+		set userNm = #{userNm, jdbcType=VARCHAR},
+		pass = #{pass, jdbcType=VARCHAR},
+		alias = #{alias, jdbcType=VARCHAR},
+		reg_dt = #{reg_dt, jdbcType=DATE},
+		addr1 = #{addr1, jdbcType=VARCHAR},
+		addr2 = #{addr2, jdbcType=VARCHAR},
+		zipcode = #{zipcode, jdbcType=VARCHAR},
+		filename = #{filename, jdbcType=VARCHAR},
+		realfilename = #{realfilename , jdbcType=VARCHAR}
+		where userid = #{userId}
+	</update>
 </mapper>
 
 

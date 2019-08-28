@@ -6,6 +6,8 @@ import java.util.Date;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import kr.or.ddit.encrypt.kisa.sha256.KISA_SHA256;
+
 public class User {
 	private static final Logger logger = LoggerFactory.getLogger(User.class);
 	
@@ -142,16 +144,20 @@ public class User {
 		this.pass = pass;
 	}
 	
+	
 	@Override
 	public String toString() {
 		return "User [userId=" + userId + ", pass=" + pass + ", userNm=" + userNm + ", alias=" + alias + ", reg_dt="
 				+ reg_dt + ", addr1=" + addr1 + ", addr2=" + addr2 + ", zipcode=" + zipcode + ", filename=" + filename
-				+ ", realfilename=" + realfilename + "]";
+				+ ", realfilename=" + realfilename + ", realfilename2=" + realfilename2 + "]";
 	}
 
+
+	//로그인을 확인하는 메서드 -> 비밀번호
 	public boolean checkLoginValidate(String userId, String pass) {
 		
-		if(userId.equals(this.userId) && pass.equals(this.pass))
+		//암호화 문장끼리 비교
+		if(userId.equals(this.userId) && KISA_SHA256.encrypt(pass).equals(this.pass))
 			return true;
 		
 		return false;

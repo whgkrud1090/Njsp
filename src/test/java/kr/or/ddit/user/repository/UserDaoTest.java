@@ -4,6 +4,7 @@ import static org.junit.Assert.*;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
@@ -16,6 +17,7 @@ import org.slf4j.LoggerFactory;
 import kr.or.ddit.common.model.Page;
 import kr.or.ddit.user.model.User;
 import kr.or.ddit.util.MybatisUtil;
+import oracle.sql.DATE;
 
 public class UserDaoTest {
 	private static final Logger logger = LoggerFactory.getLogger(UserDaoTest.class);
@@ -46,6 +48,7 @@ public class UserDaoTest {
 	@After
 	public void tearDown() {
 		logger.debug("after");
+		
 		sqlSession.close();
 	}
 	
@@ -81,8 +84,8 @@ public class UserDaoTest {
 		User userVo = userDao.getUser(sqlSession, userId);
 		
 		/***Then***/
-		assertEquals("브라운", userVo.getUserNm());
-		assertEquals("brown1234", userVo.getPass());
+		assertEquals("홍길동", userVo.getUserNm());
+		assertEquals("c6347b73d5b1f7c77f8be828ee3e871c819578f23779c7d5e082ae2b36a44", userVo.getPass());
 	}
 	
 	/**
@@ -169,6 +172,27 @@ public class UserDaoTest {
 		/***Then***/
 		assertEquals(1, insertCnt);
 	}	
+	
+	@Test
+	   public void userUpdateTest() throws ParseException {
+	      /***Given***/
+	      User userVO = new User();
+	      userVO.setUserId("brown");
+	      userVO.setPass("c6347b73d5b1f7c77f8be828ee3e871c819578f23779c7d5e082ae2b36a44");
+	      userVO.setReg_dt(new SimpleDateFormat("yyyy-MM-dd").parse("2019-08-08"));
+	      userVO.setUserNm("홍길동");
+	      userVO.setAlias("가나다");
+	      userVO.setAddr1("대흥동");
+	      userVO.setAddr2("영민빌딩");
+	      userVO.setZipcode("34340");
+
+	      /***When***/
+	      int updateCnt = userDao.updateUser(sqlSession, userVO);
+	      sqlSession.commit();
+
+	      /***Then***/
+	      assertEquals(updateCnt, 1);
+	   }
 }
 
 

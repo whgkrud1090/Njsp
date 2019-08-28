@@ -70,6 +70,17 @@ public interface IUserService {
 	* Method 설명 : 사용자 삭제
 	 */
 	int deleteUser(String userId);
+	
+	/**
+	 * Method : deleteUser
+	 * 작성자 : PC-03
+	 * 변경이력 :
+	 * @param sqlSession
+	 * @param userId
+	 * @return
+	 * Method 설명 : 사용자 수정
+	 */
+	int updateUser(User user);
 
 }
 

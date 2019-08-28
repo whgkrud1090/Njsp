@@ -22,7 +22,6 @@
 
 <script type="text/javascript">
 $(document).ready(function() {
-// 	setTestData();
 	
 	//우편번호 검색 버튼 클릭 이벤트
 	$('#zipcodeBtn').on('click',function() {
@@ -37,11 +36,16 @@ $(document).ready(function() {
 	        }
 	    }).open();
 	});
+	
+	$('#regBtn').on('click', function() {
+		
+	})
+	
 });
-
 </script>
 </head>
 <body>
+	
 	
 	<!-- header -->
 	<%@ include file="/commonJsp/header.jsp" %>
@@ -56,11 +60,12 @@ $(document).ready(function() {
 				
 				<%--파일 전송은 post만 가능 --%>
 				<form id="frm" class="form-horizontal" role="form" action="${cp }/userupdate" method="post" enctype="multipart/form-data">
-					
 					<div class="form-group">
 						<label for="userNm" class="col-sm-2 control-label">사용자 사진</label>
 						<div class="col-sm-10">
-							<input type="file" class="form-control" id="picture" name="picture"
+<%-- 							<img src="${cp }${user.realfilename2 }"/> --%>
+							<img src="${cp }/userpicture?userId=${user.userId}"/>
+						<input type="file" class="form-control" id="picture" name="picture"
 								placeholder="사용자 사진">
 						</div>
 					</div>
@@ -68,8 +73,7 @@ $(document).ready(function() {
 						<label for="userNm" class="col-sm-2 control-label">사용자 아이디</label>
 						<div class="col-sm-10">
 							<input type="text" class="form-control" id="userId" name="userId"
-								placeholder="사용자 아이디" value="${parm.userId }">
-								${userIdMsg }
+								placeholder="사용자 아이디" value="${user.userId }"  readonly="readonly">
 						</div>
 					</div>
 
@@ -77,7 +81,7 @@ $(document).ready(function() {
 						<label for="userNm" class="col-sm-2 control-label" >사용자 이름</label>
 						<div class="col-sm-10">
 							<input type="text" class="form-control" id="userNm" name="userNm"
-								placeholder="사용자 이름"  value="${parm.userNm }">
+								placeholder="사용자 이름"  value="${user.userNm }">
 						</div>
 					</div>
 					
@@ -85,21 +89,21 @@ $(document).ready(function() {
 						<label for="alias" class="col-sm-2 control-label">별명</label>
 						<div class="col-sm-10">
 							<input type="text" class="form-control" id="alias" name="alias"
-								placeholder="별명" value="${parm.alias }"/>
+								placeholder="별명" value="${user.alias }"/>
 						</div>
 					</div>
 					<div class="form-group">
 						<label for="reg_dt" class="col-sm-2 control-label">생일</label>
 						<div class="col-sm-10">
 							<input type="date" class="form-control" id="reg_dt" name="reg_dt"
-								placeholder="생일" value="${parm.reg_dt }"/>
+								placeholder="생일" value="${user.reg_dt_fmt }"/>
 						</div>
 					</div>
 					<div class="form-group">
 						<label for="addr1" class="col-sm-2 control-label">주소1</label>
 						<div class="col-sm-8">
 							<input type="text" class="form-control" id="addr1" name="addr1"
-								placeholder="주소1" readonly="readonly" value="${parm.addr1 }"/>
+								placeholder="주소1" readonly="readonly" value="${user.addr1 }"/>
 						</div>
 						
 						<div class="col-sm-2"> <button type="button" class="btn btn-default"  id="zipcodeBtn">우편번호</button></div>
@@ -108,27 +112,27 @@ $(document).ready(function() {
 						<label for="addr2" class="col-sm-2 control-label">주소2</label>
 						<div class="col-sm-10">
 							<input type="text" class="form-control" id="addr2" name="addr2"
-								placeholder="주소2" value="${parm.addr2 }"/>
+								placeholder="주소2" value="${user.addr2 }"/>
 						</div>
 					</div>
 					<div class="form-group">
 						<label for="zipcode" class="col-sm-2 control-label">우편번호</label>
 						<div class="col-sm-10">
 							<input type="text" class="form-control" id="zipcode" name="zipcode"
-								placeholder="우편번호" readonly="readonly" value="${parm.zipcode }"/>
+								placeholder="우편번호" readonly="readonly" value="${user.zipcode }"/>
 						</div>
 					</div>
 					<div class="form-group">
 						<label for="pass" class="col-sm-2 control-label">Password</label>
 						<div class="col-sm-10">
 							<input type="password" class="form-control" id="pass" name="pass"
-								placeholder="Password"/>
+								placeholder="Password" value="${user.pass }"/>
 						</div>
 					</div>
 
 					<div class="form-group">
 						<div class="col-sm-offset-2 col-sm-10">
-							<button type="submit" class="btn btn-default" id="regBtn">사용자 등록</button>
+							<button type="submit" class="btn btn-default" id="regBtn">사용자 수정</button>
 						</div>
 					</div>
 				</form>

@@ -99,7 +99,7 @@ public class UserFormController extends HttpServlet {
 			
 			//서비스 메소드 호출
 			//사용자 등록
-			User user = new User(userId, userNm, alias, reg_dt_date, addr1, addr2, pass, zipcode, filename, path);
+			User user = new User(userNm, pass, alias, reg_dt_date, addr1, addr2, zipcode, filename, path, userId);
 			int insertCnt = 0;
 			
 			try {
