@@ -40,6 +40,7 @@ public class UserPagingListController extends HttpServlet {
 		System.out.println(pagesize);
 		
 		Page p = new Page(page, pagesize);
+		
 		request.setAttribute("pageVo", p);
 		System.out.println(p);
 		

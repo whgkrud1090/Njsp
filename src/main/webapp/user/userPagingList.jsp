@@ -2,7 +2,12 @@
 <%@page import="kr.or.ddit.user.model.User"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>	
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>	
+
+<%-- 수업시간에 사용한 fmt태그를 이용하여 userPagingList의 reg_dt 
+	 컬럼(date 타입)을 문자열 (yyyy/MM/dd)로 출력될 수 있게끔 소스 코드 수정 
+--%>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -93,7 +98,8 @@ $(document).ready(function(){
 										<td>${user.userId }</td>
 										<td>${user.userNm }</td>
 										<td>${user.alias }</td>
-										<td>${user.reg_dt_fmt }</td>
+<%-- 										<td>${user.reg_dt }</td> --%>
+										<td><fmt:formatDate value="${user.reg_dt }" pattern="yyyy/MM/dd"/></td>
 									</tr>
 								</c:forEach>
 							</table>
