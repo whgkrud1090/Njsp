@@ -6,7 +6,6 @@ import org.apache.ibatis.session.SqlSession;
 
 import kr.or.ddit.common.model.Page;
 import kr.or.ddit.lprod.model.Lprod;
-import kr.or.ddit.util.MybatisUtil;
 
 public class LprodDao implements ILprodDao {
 

@@ -18,7 +18,6 @@
 </head>
 
 <body>
-
 	<!-- header -->
 	<%@ include file="/commonJsp/header.jsp" %>
 	
@@ -34,6 +33,7 @@
 				<div class="blog-header">
 					<h1 class="blog-title">Main</h1>
 					<p class="lead blog-description">Jsp / Spring.</p>
+
 				</div>
 
 				<div class="row">
