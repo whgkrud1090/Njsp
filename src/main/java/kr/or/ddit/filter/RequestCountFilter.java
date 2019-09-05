@@ -75,21 +75,21 @@ public class RequestCountFilter implements Filter{
 		//형변환
 		HttpServletRequest httpRequest = (HttpServletRequest) request;
 		String uri = httpRequest.getRequestURI();
-		String method = httpRequest.getRequestURI();
-		RequestVo requestMet = new RequestVo(uri, method);
+//		String method = httpRequest.getRequestURI();
+//		RequestVo requestMet = new RequestVo(uri, method);
 		
 		
 		//현재까지 해당 uri를 요청한 횟수를 구한다.
 		int uriCount = requestCountMap.getOrDefault(uri, 0);	
-		int methodCount = requestMethodMap.getOrDefault(method, 0);
+//		int methodCount = requestMethodMap.getOrDefault(method, 0);
 		
 		//현재 요청이 왔으므로 한건 증가
 		uriCount++;
-		methodCount++;
+//		methodCount++;
 		
 		//맵객체에 데이터를 갱신
 		requestCountMap.put(uri, uriCount);
-		requestMethodMap.put(requestMet, methodCount);
+//		requestMethodMap.put(requestMet, methodCount);
 		
 		chain.doFilter(request, response);
 		
