@@ -30,8 +30,6 @@
 	</error-page>
 
 
-
-
 	<!-- 초기화 파라미터 -->
 	<context-param>
 		<param-name>ADMIN</param-name>
@@ -68,6 +66,19 @@
 		<res-type>javax.sql.DataSource</res-type>
 		<res-auth>Container</res-auth>
 	</resource-ref>
+	
+
+	<!-- filter 설정 -->
+	<filter>
+		<filter-name>requestCountFilter</filter-name>
+		<filter-class>kr.or.ddit.filter.RequestCountFilter</filter-class>
+	</filter>
+	
+	<!-- 안티패턴(?) -->
+	<filter-mapping>
+		<filter-name>requestCountFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
 </web-app>
 
 
