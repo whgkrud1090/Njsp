@@ -48,7 +48,7 @@ public class LoginCheckFilter implements Filter {
 			//로그인 화면
 			//리다이렉트
 			HttpServletResponse httpResponse = (HttpServletResponse) response;
-			httpResponse.sendRedirect("/login");
+			httpResponse.sendRedirect(httpRequest.getContextPath() + "/login");
 		}
 		//로그인한 상황
 		else {
