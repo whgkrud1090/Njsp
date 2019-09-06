@@ -1,5 +1,5 @@
-﻿/**
- * 전자정부 제공 ARIAUTIL
+/**
+  * 전자정부 제공 ARIAUTIL
  * ARIAUtil
  */
 //package crdf.regi.egov.security;

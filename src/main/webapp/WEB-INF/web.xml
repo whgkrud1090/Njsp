@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xmlns="http://java.sun.com/xml/ns/javaee"
-	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
-	version="3.0">
-	<display-name>jsp</display-name>
-	<welcome-file-list>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" version="3.0">
+  <display-name>Njsp</display-name>
+  	<welcome-file-list>
 		<welcome-file>index.html</welcome-file>
 		<welcome-file>index.htm</welcome-file>
 		<welcome-file>index.jsp</welcome-file>
@@ -79,17 +76,13 @@
 		<filter-name>requestCountFilter</filter-name>
 		<url-pattern>/*</url-pattern>
 	</filter-mapping>
+	
+	<!-- listener 설정 -->
+	<listener>
+		<listener-class>kr.or.ddit.listener.ContextPathInitListener</listener-class>
+	</listener>
+
+	<listener>
+		<listener-class>kr.or.ddit.listener.SessionListener</listener-class>
+	</listener>
 </web-app>
-
-
-
-
-
-
-
-
-
-
-
-
-
